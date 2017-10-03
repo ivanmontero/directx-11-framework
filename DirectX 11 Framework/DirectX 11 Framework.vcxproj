@@ -20,33 +20,33 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="CrateModel.cpp" />
-    <ClCompile Include="FloorModel.cpp" />
+    <ClCompile Include="CrateMesh.cpp" />
+    <ClCompile Include="FloorMesh.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="TestScene.cpp" />
-    <ClCompile Include="TriangleModel.cpp" />
+    <ClCompile Include="TriangleMesh.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="CrateModel.h" />
-    <ClInclude Include="FloorModel.h" />
+    <ClInclude Include="CrateMesh.h" />
+    <ClInclude Include="FloorMesh.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Keyboard.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="Models.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Meshes.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scenes.h" />
     <ClInclude Include="Structs.h" />
     <ClInclude Include="TestScene.h" />
-    <ClInclude Include="TriangleModel.h" />
+    <ClInclude Include="TriangleMesh.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
@@ -73,13 +73,13 @@
     <ProjectGuid>{D6AFB787-C95A-4252-B77C-B6F5B49D2CFC}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DirectX11Framework</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">

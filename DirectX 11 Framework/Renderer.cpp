@@ -1,18 +1,19 @@
 #pragma comment(lib, "d3d11.lib")
-#pragma comment(lib, "d3dx11.lib")
+//#pragma comment(lib, "d3dx11.lib")
 #pragma comment(lib, "dxgi.lib")
 #pragma comment(lib, "d3dcompiler.lib")
-#pragma comment(lib, "dxerr.lib")
+//#pragma comment(lib, "dxerr.lib")
 #pragma comment(lib, "legacy_stdio_definitions.lib")
 
 #include <Windows.h>
 #include <d3dcompiler.h>
-#include <DxErr.h>
+//#include <DxErr.h>
 #include "Renderer.h"
 #include "Window.h"
-#include "Model.h"
+#include "Mesh.h"
 #include "Camera.h"
 #include "Game.h"
+#include <comdef.h>
 
 int							Renderer::BackBufferWidth			= 0;
 int							Renderer::BackBufferHeight			= 0;
@@ -39,10 +40,11 @@ ID3D11Buffer*				Renderer::CurrentIndexBuffer		= nullptr;
 ID3D11ShaderResourceView*	Renderer::CurrentTexture			= nullptr;
 ID3D11SamplerState*			Renderer::SamplerState				= nullptr;
 
-D3D11_INPUT_ELEMENT_DESC	Renderer::InputLayoutDesc[] = 
+D3D11_INPUT_ELEMENT_DESC	Renderer::InputLayoutDesc[] =
 {
 	{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 	{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+	{ "NORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT,    0, 20, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 };
 
 
@@ -203,7 +205,7 @@ void Renderer::Resize(int backBufferWidth, int backBufferHeight)
 
 HRESULT Renderer::LoadVertexShader(WCHAR* filename, ID3D11VertexShader** vertexShader, ID3DBlob** rawBlob)
 {
-	ID3DBlob* rawData;
+	ID3DBlob* rawData = nullptr;
 	HR(D3DReadFileToBlob(filename, &rawData));
 
 	HR(Device->CreateVertexShader(rawData->GetBufferPointer(), rawData->GetBufferSize(), nullptr, vertexShader));
@@ -214,7 +216,7 @@ HRESULT Renderer::LoadVertexShader(WCHAR* filename, ID3D11VertexShader** vertexS
 
 HRESULT Renderer::LoadPixelShader(WCHAR* filename, ID3D11PixelShader** pixelShader, ID3DBlob** rawBlob)
 {
-	ID3DBlob* rawData;
+	ID3DBlob* rawData = nullptr;
 	HR(D3DReadFileToBlob(filename, &rawData));
 
 	HR(Device->CreatePixelShader(rawData->GetBufferPointer(), rawData->GetBufferSize(), nullptr, pixelShader));
@@ -306,12 +308,12 @@ void Renderer::Render()
 	ImmediateContext->DrawIndexed(CurrentIndexCount, 0, 0);
 }
 
-void Renderer::RenderModel(Model* model)
+void Renderer::RenderMesh(Mesh* mesh)
 {
-	SetVertexBuffer(model->GetVertexBuffer());
-	SetIndexBuffer(model->GetIndexBuffer(), model->GetIndexCount());
-	SetWorldMatrix(model->GetWorldMatrix());
-	SetTexture(model->GetTexture());
+	SetVertexBuffer(mesh->GetVertexBuffer());
+	SetIndexBuffer(mesh->GetIndexBuffer(), mesh->GetIndexCount());
+	SetWorldMatrix(mesh->GetWorldMatrix());
+	SetTexture(mesh->GetTexture());
 	Render();
 }
 
@@ -322,7 +324,7 @@ void Renderer::Present()
 
 ID3D11Buffer* Renderer::CreateVertexBuffer(Vertex vertices[], UINT vertexCount)
 {
-	ID3D11Buffer* buffer;
+	ID3D11Buffer* buffer = nullptr;
 
 	D3D11_BUFFER_DESC bd;
 	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
@@ -340,7 +342,7 @@ ID3D11Buffer* Renderer::CreateVertexBuffer(Vertex vertices[], UINT vertexCount)
 
 ID3D11Buffer* Renderer::CreateIndexBuffer(WORD indices[], UINT indexCount)
 {
-	ID3D11Buffer* buffer;
+	ID3D11Buffer* buffer = nullptr;
 
 	D3D11_BUFFER_DESC bd;
 	bd.BindFlags = D3D11_BIND_INDEX_BUFFER;
@@ -358,8 +360,9 @@ ID3D11Buffer* Renderer::CreateIndexBuffer(WORD indices[], UINT indexCount)
 
 ID3D11ShaderResourceView* Renderer::CreateTexture(LPCWSTR filepath)
 {
-	ID3D11ShaderResourceView* texture;
-	HR(D3DX11CreateShaderResourceViewFromFile(Device, filepath, nullptr, nullptr, &texture, nullptr));
+	ID3D11ShaderResourceView* texture = nullptr;
+	//HR(D3DX11CreateShaderResourceViewFromFile(Device, filepath, nullptr, nullptr, &texture, nullptr));
+	//TODO: Find a way to create
 	return texture;
 }
 

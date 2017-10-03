@@ -9,7 +9,7 @@ using namespace DirectX;
 struct Vertex;
 
 // Should be inherited
-class Model
+class Mesh
 {
 protected:
 	//Vertex* Vertices = nullptr; // points to the array

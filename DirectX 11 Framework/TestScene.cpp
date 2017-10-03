@@ -1,7 +1,7 @@
 ﻿#include <directxcolors.h>
 #include <cmath>
 #include "TestScene.h"
-#include "Models.h"
+#include "Meshes.h"
 #include "Renderer.h"
 #include "Camera.h"
 #include "Mouse.h"
@@ -9,8 +9,8 @@
 
 TestScene::TestScene()
 {
-	Crate = new CrateModel(0.0f, -1.0f, 0.0f);
-	Floor = new FloorModel(0.0f, -2.0f, 0.0f);
+	Crate = new CrateMesh(0.0f, -1.0f, 0.0f);
+	Floor = new FloorMesh(0.0f, -2.0f, 0.0f);
 	Camera::SetPosition(0.0f, 0.0f, -10.0f);
 }
 
@@ -19,8 +19,8 @@ void TestScene::Update(float delta)
 
 	//***************CAMERA ROTATION CODE***************//
 
-	float dRotY = Mouse::GetDX() * 0.02f;
-	float dRotX = Mouse::GetDY() * 0.02f;
+	float dRotY = Mouse::GetDX() * 0.03f;
+	float dRotX = Mouse::GetDY() * 0.03f;
 	XMFLOAT3 camRot = Camera::GetRotation();
 	float rotX = camRot.x + dRotX;
 	if (rotX > 90) rotX = 90;
@@ -94,7 +94,7 @@ void TestScene::Update(float delta)
 
 	if (Keyboard::IsKeyDown(DIK_SPACE) && camPos.y < .0001f)
 	{
-		currentVelY = .002f;
+		currentVelY = .0025f;
 	}
 
 	Camera::SetPosition(camPos.x, camPos.y, camPos.z);
@@ -117,8 +117,8 @@ void TestScene::Render()
 {
 	//Renderer::SetWireFrame(true);
 	Renderer::Clear(Colors::Black);
-	Renderer::RenderModel(Crate);
-	Renderer::RenderModel(Floor);
+	Renderer::RenderMesh(Crate);
+	Renderer::RenderMesh(Floor);
 	Renderer::Present();
 }
 

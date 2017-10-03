@@ -48,17 +48,11 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TestScene.cpp">
       <Filter>Source Files\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="TriangleModel.cpp">
-      <Filter>Source Files\Models</Filter>
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
       <Filter>Source Files\Input</Filter>
@@ -66,10 +60,16 @@
     <ClCompile Include="Keyboard.cpp">
       <Filter>Source Files\Input</Filter>
     </ClCompile>
-    <ClCompile Include="FloorModel.cpp">
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CrateMesh.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
-    <ClCompile Include="CrateModel.cpp">
+    <ClCompile Include="FloorMesh.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleMesh.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,23 +83,14 @@
     <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Model.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Models.h">
-      <Filter>Header Files\Helper Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Scenes.h">
       <Filter>Header Files\Helper Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="TriangleModel.h">
-      <Filter>Header Files\Models</Filter>
     </ClInclude>
     <ClInclude Include="TestScene.h">
       <Filter>Header Files\Scenes</Filter>
@@ -110,13 +101,22 @@
     <ClInclude Include="Keyboard.h">
       <Filter>Header Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="FloorModel.h">
-      <Filter>Header Files\Models</Filter>
-    </ClInclude>
     <ClInclude Include="Structs.h">
       <Filter>Header Files\Helper Headers</Filter>
     </ClInclude>
-    <ClInclude Include="CrateModel.h">
+    <ClInclude Include="Meshes.h">
+      <Filter>Header Files\Helper Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CrateMesh.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FloorMesh.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="TriangleMesh.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
   </ItemGroup>

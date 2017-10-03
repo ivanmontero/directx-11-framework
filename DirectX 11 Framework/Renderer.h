@@ -1,16 +1,18 @@
 #pragma once
 
 #include <d3d11.h>
-#include <D3DX11tex.h>
+//#include <D3DX11tex.h>
 #include <string>
 #include <directxmath.h>
 #include "Structs.h"
 
-#define HR(x) { if(FAILED(x)){ MessageBoxW(NULL, DXGetErrorDescription(x), DXGetErrorString(x), MB_OK); Game::Exit(); }}
+//TODO: Get SDK
+//#define HR(x) { if(FAILED(x)){ MessageBoxW(NULL, DXGetErrorDescription(x), DXGetErrorString(x), MB_OK); Game::Exit(); }}
+#define HR(x) { if(FAILED(x)){_com_error err(x); MessageBoxW(NULL, err.ErrorMessage(), err.ErrorMessage(), MB_OK); Game::Exit(); }}
 
 using namespace DirectX;
 
-class Model;
+class Mesh;
 
 class Renderer
 {
@@ -71,7 +73,7 @@ public:
 	static void SetWireFrame(bool);
 
 	static void Render();
-	static void RenderModel(Model*);
+	static void RenderMesh(Mesh*);
 	static void Present();
 
 	static ID3D11Buffer* CreateVertexBuffer(Vertex[], UINT);
